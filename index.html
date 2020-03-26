@@ -155,6 +155,10 @@ Error message and password prompt
 
 <li>$:/languages/pt-BR</li>
 
+<li>$:/plugins/felixhayashi/hotzone</li>
+
+<li>$:/plugins/felixhayashi/topstoryview</li>
+
 <li>$:/plugins/tiddlywiki/railroad</li>
 
 <li>$:/SiteSubtitle</li>
@@ -369,6 +373,8 @@ Error message and password prompt
 
 <li>$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.21/index.html/$:/themes/tiddlywiki/vanilla</li>
 
+<li>$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary</li>
+
 <li>$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.21/index.html</li>
 
 <li>$:/themes/tiddlywiki/centralised</li>
@@ -380,6 +386,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
 <li>Artes</li>
+
+<li>Coisas uteis</li>
 
 <li>Don't Open (dead inside)</li>
 
@@ -394,6 +402,10 @@ Error message and password prompt
 <li>Português</li>
 
 <li>Quarentine Exercises :(</li>
+
+<li>Untitled</li>
+
+<li>Untitled 1</li>
 
 </ul>
 </p>
@@ -9601,19 +9613,15 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200324191449739" modified="20200324191601459" title="$:/DefaultTiddlers">
+<div created="20200324191449739" modified="20200326190756027" title="$:/DefaultTiddlers">
 <pre>[[Don't Open (dead inside)]]
-</pre>
+[[Quarentine Exercises :(]]
+[[Coisas uteis]]</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled&quot;: {
-            &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;Historia - A Primeira República no Brasil&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>Os seguintes tiddlers foram importados:
+
+# [[$:/plugins/felixhayashi/topstoryview]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -13114,6 +13122,77 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div author="Felix Küppers" core-version="&gt;=5.1.5" dependents="" description="HotZone – Be notified when tiddlers are scrolled into view" list="Configuration License Readme" plugin-type="plugin" released="" source="https://github.com/felixhayashi/TW5-HotZone" title="$:/plugins/felixhayashi/hotzone" type="application/json" version="0.0.3">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/felixhayashi/hotzone/config.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/hotzone/config.js&quot;,
+            &quot;text&quot;: &quot;/*\\\n\ntitle: $:/plugins/felixhayashi/hotzone/config.js\ntype: application/javascript\nmodule-type: library\n\n@preserve\n\n\\*/\n(function(){\&quot;use strict\&quot;;exports.config={classNames:{storyRiver:\&quot;tc-story-river\&quot;,tiddlerFrame:\&quot;tc-tiddler-frame\&quot;,tiddlerTitle:\&quot;tc-title\&quot;},references:{userConfig:\&quot;$:/config/hotzone/focusOffset\&quot;,focussedTiddlerStore:\&quot;$:/temp/focussedTiddler\&quot;},checkbackTime:$tw.utils.getAnimationDuration()}})();&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;library&quot;
+        },
+        &quot;$:/plugins/felixhayashi/hotzone/hotzone.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/hotzone/hotzone.js&quot;,
+            &quot;text&quot;: &quot;/*\\\n\ntitle: $:/plugins/felixhayashi/hotzone/hotzone.js\ntype: application/javascript\nmodule-type: startup\n\n@preserve\n\n\\*/\n(function(){\&quot;use strict\&quot;;exports.name=\&quot;hotzone\&quot;;exports.platforms=[\&quot;browser\&quot;];exports.after=[\&quot;story\&quot;];exports.synchronous=true;exports.startup=function(){var t=require(\&quot;$:/plugins/felixhayashi/hotzone/config.js\&quot;).config;var e=null;var i=false;var r=document.getElementsByClassName(t.classNames.storyRiver)[0];var s=$tw.wiki.getTiddlerData(t.references.userConfig,{});var a=isNaN(parseInt(s.focusOffset))?150:parseInt(s.focusOffset);var n=function(e,i,r){if(!(e instanceof Element))return;if(!$tw.utils.hasClass(e,t.classNames.tiddlerFrame))return;var s=e.getElementsByClassName(t.classNames.tiddlerTitle)[0];if(s){var a=s.innerText||s.textContent;return a.trim()}};var o=function(t){if(!i){i=true;window.setTimeout(f,t||0)}};var l=function(e,i){$tw.wiki.addTiddler(new $tw.Tiddler({title:t.references.focussedTiddlerStore,text:e},$tw.wiki.getModificationFields()));if(i){var r=document.getElementsByClassName(\&quot;hzone-focus\&quot;)[0];if(r){$tw.utils.removeClass(r,\&quot;hzone-focus\&quot;)}$tw.utils.addClass(i,\&quot;hzone-focus\&quot;)}};var f=function(){i=false;var s=$tw.wiki.getTiddler(\&quot;$:/StoryList\&quot;);if(s&amp;&amp;s.fields.list.length){var o=null;var f=Number.MAX_VALUE;var d=r.children;var u=t.classNames.tiddlerFrame;for(var c=d.length;c--;){if($tw.utils.hasClass(d[c],u)){var v=d[c].getBoundingClientRect();var w=Math.min(Math.abs(a-v.top),Math.abs(a-v.bottom));if(w&lt;f){o=d[c];f=w}}}var m=n(o);if(m!==e&amp;&amp;$tw.wiki.getTiddler(m)){e=m;l(e,o);return}}else if(e){e=\&quot;\&quot;;l(e)}};var d=function(t){if(t[\&quot;$:/HistoryList\&quot;]){if(!$tw.wiki.tiddlerExists(\&quot;$:/HistoryList\&quot;))return;var e=$tw.wiki.getTiddler(\&quot;$:/HistoryList\&quot;).fields[\&quot;current-tiddler\&quot;];var i=$tw.wiki.getTiddlerList(\&quot;$:/StoryList\&quot;);var r=i.indexOf(e)&gt;=0;if(!r)return;o($tw.utils.getAnimationDuration()+100)}else if(t[\&quot;$:/StoryList\&quot;]){o($tw.utils.getAnimationDuration()+100)}};var u=function(t){o(250)};$tw.wiki.addEventListener(\&quot;change\&quot;,d);window.addEventListener(\&quot;scroll\&quot;,u,false);u()}})();&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;startup&quot;
+        },
+        &quot;$:/plugins/felixhayashi/hotzone/Configuration&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/hotzone/Configuration&quot;,
+            &quot;text&quot;: &quot;Please see the [[GitHub page|https://github.com/felixhayashi/TW5-HotZone]] for more information on the options.\n\nSave and reload the wiki to activate changes.\n\n&lt;table&gt;\n  &lt;tr&gt;\n    &lt;th align=\&quot;left\&quot;&gt;Focus offset:&lt;/th&gt;\n    &lt;td&gt;&lt;$edit-text tiddler=\&quot;$:/config/hotzone/focusOffset\&quot; tag=\&quot;input\&quot; default=\&quot;71px\&quot; /&gt;&lt;/td&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;&quot;
+        },
+        &quot;$:/temp/focussedTiddler&quot;: {
+            &quot;title&quot;: &quot;$:/temp/focussedTiddler&quot;
+        },
+        &quot;$:/plugins/felixhayashi/hotzone/License&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/hotzone/License&quot;,
+            &quot;text&quot;: &quot;This code is released under the BSD license. For the exact terms visit:\n\nhttps://github.com/felixhayashi/TW5-HotZone/blob/master/LICENSE&quot;
+        },
+        &quot;$:/plugins/felixhayashi/hotzone/Readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/hotzone/Readme&quot;,
+            &quot;text&quot;: &quot;Please visit the [[GitHub page|https://github.com/felixhayashi/TW5-HotZone]] for more information.&quot;
+        }
+    }
+}</pre>
+</div>
+<div author="Felix Küppers" core-version="&gt;=5.1.5" dependents="" description="TopStoryView – Always scroll navigated tiddlers to the top" list="Configuration License Readme" plugin-type="plugin" released="" source="https://github.com/felixhayashi/TW5-TopStoryView" title="$:/plugins/felixhayashi/topstoryview" type="application/json" version="0.2.0">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/felixhayashi/topstoryview/config.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/config.js&quot;,
+            &quot;text&quot;: &quot;/*\\\n\ntitle: $:/plugins/felixhayashi/topstoryview/config.js\ntype: application/javascript\nmodule-type: library\n\n@preserve\n\n\\*/\n(function(){\&quot;use strict\&quot;;exports.config={classNames:{storyRiver:\&quot;tc-story-river\&quot;,backDrop:\&quot;story-backdrop\&quot;,tiddlerFrame:\&quot;tc-tiddler-frame\&quot;,tiddlerTitle:\&quot;tc-title\&quot;},references:{userConfig:\&quot;$:/config/topStoryView\&quot;,focussedTiddlerStore:\&quot;$:/temp/focussedTiddler\&quot;,refreshTrigger:\&quot;$:/temp/focussedTiddler/refresh\&quot;},checkbackTime:$tw.utils.getAnimationDuration()}})();&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;library&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/layout&quot;: {
+            &quot;text&quot;: &quot;html .tc-story-river:after {\n  content: \&quot;\&quot;;\n  display: block; }\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/layout&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;tags&quot;: [
+                &quot;$:/tags/Stylesheet&quot;
+            ]
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/Configuration&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/Configuration&quot;,
+            &quot;text&quot;: &quot;Please see the [[GitHub page|https://github.com/felixhayashi/TW5-TopStoryView]] for more information on the options.\n\nSave and reload the wiki to activate changes.\n\n&lt;table&gt;\n  &lt;tr&gt;\n    &lt;th align=\&quot;left\&quot;&gt;Scroll offset:&lt;/th&gt;\n    &lt;td&gt;&lt;$edit-text tiddler=\&quot;$:/config/topStoryView\&quot; field=\&quot;scroll-offset\&quot; tag=\&quot;input\&quot; default=\&quot;150px\&quot; /&gt;&lt;/td&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/License&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/License&quot;,
+            &quot;text&quot;: &quot;This code is released under the BSD license. For the exact terms visit:\n\nhttps://github.com/felixhayashi/TW5-TopStoryView/blob/master/LICENSE&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/Readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/Readme&quot;,
+            &quot;text&quot;: &quot;Please visit the [[GitHub page|https://github.com/felixhayashi/TW5-TopStoryView]] for more information.&quot;
+        },
+        &quot;$:/plugins/felixhayashi/topstoryview/top.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/felixhayashi/topstoryview/top.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/felixhayashi/topstoryview/top.js\ntype: application/javascript\nmodule-type: storyview\n\nViews the story as a linear sequence\n\n@preserve\n\n\\*/\n(function(){\&quot;use strict\&quot;;var t=require(\&quot;$:/plugins/felixhayashi/topstoryview/config.js\&quot;).config;var e=\&quot;cubic-bezier(0.645, 0.045, 0.355, 1)\&quot;;var i=function(e){this.listWidget=e;this.pageScroller=new $tw.utils.PageScroller;this.pageScroller.scrollIntoView=this.scrollIntoView;this.pageScroller.storyRiverDomNode=document.getElementsByClassName(t.classNames.storyRiver)[0];var i=$tw.wiki.getTiddler(t.references.userConfig);var o=i?i.fields:{};$tw.hooks.addHook(\&quot;th-opening-default-tiddlers-list\&quot;,this.hookOpenDefaultTiddlers);var r=parseInt(o[\&quot;scroll-offset\&quot;]);this.pageScroller.scrollOffset=isNaN(r)?71:r;this.recalculateBottomSpace()};i.prototype.refreshStart=function(t,e){};i.prototype.refreshEnd=function(t,e){};i.prototype.hookOpenDefaultTiddlers=function(t){return t};i.prototype.navigateTo=function(t){var e=this.listWidget.findListItem(0,t.title);if(e===undefined)return;var i=this.listWidget.children[e];var o=i.findFirstDomNode();if(!(o instanceof Element))return;this.pageScroller.scrollIntoView(o)};i.prototype.insert=function(t){if(!t)return;var e=t.findFirstDomNode();if(!(e instanceof Element))return;this.startInsertAnimation(e,function(){this.recalculateBottomSpace()}.bind(this))};i.prototype.remove=function(t){if(!t)return;var e=t.findFirstDomNode();if(!(e instanceof Element)){t.removeChildDomNodes();return}var i=this.getLastFrame()===e;this.startRemoveAnimation(t,e,function(){t.removeChildDomNodes();this.recalculateBottomSpace();if(i){this.pageScroller.scrollIntoView(this.getLastFrame())}}.bind(this))};i.prototype.getLastFrame=function(){var t=this.listWidget.children[this.listWidget.children.length-1];return t?t.findFirstDomNode():null};i.prototype.recalculateBottomSpace=function(){var t=this.pageScroller.storyRiverDomNode;if(this.getLastFrame()){var e=this.getLastFrame().getBoundingClientRect();var i=window.innerHeight;if(e.height&lt;i){t.style[\&quot;paddingBottom\&quot;]=i-e.height+\&quot;px\&quot;;return}}t.style[\&quot;paddingBottom\&quot;]=\&quot;\&quot;};i.prototype.scrollIntoView=function(t){if(this.preventNextScrollAttempt){this.preventNextScrollAttempt=false}if(!t)return;var e=$tw.utils.getAnimationDuration();this.cancelScroll();this.startTime=Date.now();var i=$tw.utils.getScrollPosition();var o=t.getBoundingClientRect(),r={left:o.left+i.x,top:o.top+i.y,width:o.width,height:o.height};var n=function(t,e,i,o){if(t&lt;=i){return t}else if(e&lt;o&amp;&amp;i&lt;t+e-o){return t+e-o}else if(i&lt;t){return t}else{return i}},s=n(r.left,r.width,i.x,window.innerWidth),a=r.top-this.scrollOffset;if(s!==i.x||a!==i.y){var l=this,c;c=function(){var t;if(e&lt;=0){t=1}else{t=(Date.now()-l.startTime)/e}if(t&gt;=1){l.cancelScroll();t=1}t=$tw.utils.slowInSlowOut(t);window.scrollTo(i.x+(s-i.x)*t,i.y+(a-i.y)*t);if(t&lt;1){l.idRequestFrame=l.requestAnimationFrame.call(window,c)}};c()}};i.prototype.startInsertAnimation=function(t,i){var o=$tw.utils.getAnimationDuration();var r=window.getComputedStyle(t),n=parseInt(r.marginBottom,10),s=parseInt(r.marginTop,10),a=t.offsetHeight+s;setTimeout(function(){$tw.utils.setStyle(t,[{transition:\&quot;none\&quot;},{marginBottom:\&quot;\&quot;}]);i()},o);$tw.utils.setStyle(t,[{transition:\&quot;none\&quot;},{marginBottom:-a+\&quot;px\&quot;},{opacity:\&quot;0.0\&quot;}]);$tw.utils.forceLayout(t);$tw.utils.setStyle(t,[{transition:\&quot;opacity \&quot;+o+\&quot;ms \&quot;+e+\&quot;, \&quot;+\&quot;margin-bottom \&quot;+o+\&quot;ms \&quot;+e},{marginBottom:n+\&quot;px\&quot;},{opacity:\&quot;1.0\&quot;}])};i.prototype.startRemoveAnimation=function(t,i,o){var r=$tw.utils.getAnimationDuration();var n=i.offsetWidth,s=window.getComputedStyle(i),a=parseInt(s.marginBottom,10),l=parseInt(s.marginTop,10),c=i.offsetHeight+l;setTimeout(o,r);$tw.utils.setStyle(i,[{transition:\&quot;none\&quot;},{transform:\&quot;translateX(0px)\&quot;},{marginBottom:a+\&quot;px\&quot;},{opacity:\&quot;1.0\&quot;}]);$tw.utils.forceLayout(i);$tw.utils.setStyle(i,[{transition:$tw.utils.roundTripPropertyName(\&quot;transform\&quot;)+\&quot; \&quot;+r+\&quot;ms \&quot;+e+\&quot;, \&quot;+\&quot;opacity \&quot;+r+\&quot;ms \&quot;+e+\&quot;, \&quot;+\&quot;margin-bottom \&quot;+r+\&quot;ms \&quot;+e},{transform:\&quot;translateX(-\&quot;+n+\&quot;px)\&quot;},{marginBottom:-c+\&quot;px\&quot;},{opacity:\&quot;0.0\&quot;}])};exports.top=i})();&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;storyview&quot;
+        }
+    }
+}</pre>
+</div>
 <div author="AstridElocson" dependents="" description="Railroad diagram generator" list="readme usage syntax example" plugin-type="plugin" title="$:/plugins/tiddlywiki/railroad" type="application/json" version="5.1.21">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -13207,19 +13286,19 @@ Error message and password prompt
 <div created="20200324213909842" modified="20200324213909842" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20200324213224113" modified="20200324213224113" title="$:/state/tab--86143343">
-<pre>$:/core/ui/ControlPanel/Plugins/Installed/Languages</pre>
+<div created="20200324213224113" modified="20200326184310761" title="$:/state/tab--86143343">
+<pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
-<div created="20200324213359465" modified="20200324213428009" title="$:/state/tab-1342078386">
-<pre>$:/core/ui/ControlPanel/Plugins/Add/Themes</pre>
+<div created="20200324213359465" modified="20200326184131247" title="$:/state/tab-1342078386">
+<pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
 </div>
-<div created="20200324213218376" modified="20200324213859682" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Appearance</pre>
+<div created="20200324213218376" modified="20200326190738389" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20200324191617112" modified="20200324213817626" title="$:/state/tab/sidebar--595412856">
+<div created="20200324191617112" modified="20200326190017534" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20200324213717105" list="[[Quarentine Exercises :(]] História [[Historia - A Primeira República no Brasil]] [[Don't Open (dead inside)]]" modified="20200324223128176" title="$:/StoryList">
+<div created="20200326190842631" list="[[Don't Open (dead inside)]] [[Quarentine Exercises :(]] História [[Historia - Movimentos Sociais na República Velha]] [[Coisas uteis]]" modified="20200326190844071" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200324213334969" modified="20200324213334969" title="$:/temp/HidePluginWarning">
@@ -14039,6 +14118,9 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200324213237083" dependents="" description="Basic theme" modified="20200324213237083" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" server-url="https://tiddlywiki.com/library/v5.1.21/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.21/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.21">
 <pre></pre>
 </div>
+<div created="20200326184140736" modified="20200326184146405" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
+<pre></pre>
+</div>
 <div created="20200324213236968" modified="20200324213236968" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.21/index.html" url="https://tiddlywiki.com/library/v5.1.21/index.html">
 <pre>loaded</pre>
 </div>
@@ -14324,6 +14406,9 @@ novo para você.
 
 Empenhe-se em seus estudos! </pre>
 </div>
+<div created="20200326190530668" modified="20200326190943385" tags="" title="Coisas uteis">
+<pre>[[Unicode browser (simbolos especiais)|https://unicode-table.com/en/]]</pre>
+</div>
 <div created="20200324191247827" modified="20200324211916232" tags="" title="Don't Open (dead inside)">
 <pre>[img[images/alien2.jpg]]</pre>
 </div>
@@ -14440,60 +14525,98 @@ Apresente dois aspectos do processo industrial fordista e dois do pós-fordista.
 * [[Historia - A Primeira República no Brasil 2]]
 * [[Historia - A Primeira República no Brasil 3]]</pre>
 </div>
-<div created="20200324223027454" modified="20200324223034009" title="Historia - Movimentos Sociais na República Velha">
+<div created="20200324223027454" modified="20200326222414615" title="Historia - Movimentos Sociais na República Velha">
 <pre>''TENSÕES SOCIAIS NA PRIMEIRA REPÚBLICA''
 
 1- Elabore um quadro-resumo da Revolta de Canudos, apresentando:
 
-a- Localização;
+a- Localização; &amp;#128505;
 
-b- Líder;
+b- Líder; &amp;#128505;
 
-c- Organização do arraial;
+c- Organização do arraial;  &amp;#128505;
 
-d- Quem combatia o arraial;
 
-e- Por que havia oposição a Canudos;
+d- Quem combatia o arraial;&amp;#128505;
 
-f- Resultado do conflito.
+e- Por que havia oposição a Canudos;&amp;#128505;
+
+f- Resultado do conflito.&amp;#128505;
+
+[img[images/guerradoscanudos.png]]
 
 2- Sintetize os principais acontecimentos da Revolta da Vacina. Mencione as causas reais dessa revolta
 e como ela terminou.
 
+R:: O RJ estava lidando com uma série de epidemias, para solucionar esse problemas, o eleito a presidente, Rodrigo Alves, afirmou que iria melhorar o saneamento e o porto do Rio de Janeiro. O centro da cidade foi praticamente reconstruído. Muitos moradores de cortiços foram expulsos, tendo que se refugiar nos morros.
+Para combater as epidemias, traçaram o plano de vacinar a população obrigatóriamente. A população revoltada foi ás ruas fazendo com que a lei da vacinação obrigatória foi revogada.
+
 3- “O povo brasileiro é pacífico e conformado com a vida subdesenvolvida que leva”. Você concorda com
 essa afirmação? Por quê? Justifique sua opinião.
+
+R:: Não, pois já houveram várias revoltas mostrando que o povo brasileio não se conforma com a vida subdesenvolvida
 
 4- Elabore um pequeno texto sobre a Revolta da Chibata, mencionando os principais acontecimentos e
 como ela terminou.
 
+R::Marinheiros a bordo dos encouraçados MG e SP se revoltaram contra a punição corporal da chibata aplicada. Enviaram uma carta ao presidente exigindo o fim dos castigos da chibata na marinha. O governo concordou por medo de ataques e bombarteios por parte dos marujos.
+
 5- Responda:
 a. O que foi o tenentismo?
+
+R:: Foi o descontentamento dos tenentes em relação ao regime político da república velha.
+
 b. Quais eram os objetivos dos oficiais?
+
+R:: Conseguir que o voto fosse secreto e maior centralização política.
 
 6- Responda:
 a. No campo cultural, como se deu a reação contra as estruturas tradicionais do Brasil?
+
+R::
+
 b. O que foi a Semana de Arte de Moderna de 1922?
+
+R:: Foi um movimento que buscava romper com as amarra formais da produção artistíca que, segundo eles, impedia a livre manifestação cultural e criticavam a submissão cultural às correntes europeias.
 
 7- Podemos dizer que o cangaço e o movimento de devoção a padre Cícero, embora tenham sido
 fenômenos sociais distintos, buscavam soluções para o mesmo problema? Justifique sua resposta.
 
+R:: O Cangaço caracteriza-se como um movimnto ligado à questão do bandidismo social
+
 8- Na sua opinião, o que as autoridades deveriam ter feito para evitar os violentos tumultos populares de
 1904?
+
+R:: As autoridades poderiam ter intervido nas manifestações pacíficamente tentando evitar ao máximo a violência desnessessária
 
 9- De que maneira você considera a Revolta da Chibata: como um caso de indisciplina militar ou como
 um exemplo de reação popular à opressão da elite? Explique e justifique.
 
+R::Reação poupulararà opressão da elite, pois os marinheiros não concordavam com a punição corporal da chibata aplicada portanto se rebelaram contra a lei imposta pela elite.
+
 10- Faça uma lista dos problemas enfrentados pelos trabalhadores urbanos nas primeiras décadas do
 século XX.
+
+R::1- exploração no trabalho
+2-não havia leis trabalhistas
+3-condições precárias
 
 11- Quais foram as duas correntes políticas que influenciaram o movimento operário brasileiro no início
 do século XX? Apresente suas principais características.
 
+R:: Comunismo e Anarquismo
+
 12- Qual a importância da greve de 1917 de São Paulo?
+
+R:: A greve de 1917 de SP foi importante para que as ideias comunistas ganhassem força no país para melhorar as condições de trabalho
 
 13- Por que o ano de 1922 foi um ano de ruptura nas artes e na política?
 
+R:: O modernismo buscava romper os padrões europeus na questão artística. O modernismo também organizou o movimento chamado de ver-amarelismo, que possuía uma tendêncis política de direita e carácter xenófoba
+
 14- O que foi a Revolução de 1930? Qual sua importância na história do Brasil?
+
+R:: A Revolução de 1930 pôs um fim na República Velha e às articulações políticas as oliguarquias regionais brasileiras.
 </pre>
 </div>
 <div created="20200324221246814" modified="20200324222251712" tags="[[Atividade 1]]" title="Português">
@@ -14887,6 +15010,12 @@ b) FAÇA a devida correção do trecho.
 * [[Português]]
 * [[Inglês]]
 * [[Artes]]</pre>
+</div>
+<div title="Untitled">
+<pre>$:/plugins/felixhayashi/tiddlymap</pre>
+</div>
+<div title="Untitled 1">
+<pre>$:/plugins/felixhayashi/vis</pre>
 </div>
 
 </div>
